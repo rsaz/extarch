@@ -39,11 +39,6 @@
                 "command": "extarch.cmdCopyLineDown",
                 "title": "Copy Line Down",
                 "category": "ExtArch"
-            },
-            {
-                "command": "extarch.cmdSuccess",
-                "title": "Success",
-                "category": "ExtArch"
             }
         ],
         "keybindings": [
@@ -54,10 +49,6 @@
             {
                 "command": "extarch.cmdCopyLineDown",
                 "key": "ctrl+alt+/ ctrl+c"
-            },
-            {
-                "command": "extarch.cmdSuccess",
-                "key": "ctrl+alt+/ ctrl+s"
             }
         ],
         "menus": {
@@ -80,10 +71,6 @@
                 },
                 {
                     "command": "extarch.cmdCopyLineDown",
-                    "when": "true"
-                },
-                {
-                    "command": "extarch.cmdSuccess",
                     "when": "true"
                 }
             ]

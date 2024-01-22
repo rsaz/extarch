@@ -7,7 +7,6 @@ import {
     cmdHelloTwitch,
     cmdURIForCommentLine,
 } from "./commands/all.command";
-import { cmdSuccess } from "./commands/cmdSuccess.command";
 
 export class CommandManager {
     private _context: vscode.ExtensionContext;
@@ -24,7 +23,7 @@ export class CommandManager {
             if (command.IsAutoCallable) {
                 command.CommandFn();
             } else {
-                this.registerCommand(command.CommandId, command.CommandFn, command.Timeout);
+                this.registerCommand(command.CommandId, command.CommandFn);
             }
         });
     }
@@ -32,12 +31,11 @@ export class CommandManager {
     /* Register all commands */
     private addRegisteredCommands() {
         /* Add new commands here */
-        this._registeredCommands.push(cmdAddCommentLine);
-        this._registeredCommands.push(cmdGetEditorDefinition);
+        this._registeredCommands.push(cmdAddCommentLine); // reference callback
+        this._registeredCommands.push(cmdGetEditorDefinition); // reference callback
         this._registeredCommands.push(cmdURIForCommentLine); // auto executable Function callback()
-        this._registeredCommands.push(cmdHelloTwitch); // reference  callback
+        this._registeredCommands.push(cmdHelloTwitch); // auto executable Function callback()
         this._registeredCommands.push(cmdCopyLineDown); // reference callback
-        this._registeredCommands.push(cmdSuccess);
     }
 
     /**
@@ -45,20 +43,8 @@ export class CommandManager {
      * @param commandId The command Id defined in Commands Utils
      * @param callback The callback function to be executed when the command is called
      */
-    private registerCommand(
-        commandId: string,
-        callback: (...args: any[]) => any,
-        timeout: number
-    ): void {
+    private registerCommand(commandId: string, callback: (...args: any[]) => any): void {
         let disposable: vscode.Disposable = vscode.commands.registerCommand(commandId, callback);
-
-        if (timeout > 0) {
-            setTimeout(() => {
-                console.log(`Command ${commandId} disposed`);
-                console.log(`Timeout: ${timeout}`);
-                disposable.dispose();
-            }, timeout);
-        }
         this._context.subscriptions.push(disposable);
     }
 }

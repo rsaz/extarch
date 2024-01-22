@@ -69,7 +69,7 @@ function URIForCommentLine(): vscode.Disposable {
 }
 
 // Hello Twitch (via Reference)
-export const cmdHelloTwitch = new Command(CommandId.HelloTwitch, helloTwitch);
+export const cmdHelloTwitch = new Command(CommandId.HelloTwitch, helloTwitch, true);
 function helloTwitch() {
     vscode.window.showInformationMessage("Hello Twitch!");
 }

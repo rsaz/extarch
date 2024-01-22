@@ -4,5 +4,4 @@ export const CommandId = {
     URIForCommentLine: "extarch.cmdURIForCommentLine",
     HelloTwitch: "extarch.cmdHelloTwitch",
     CopyLineDown: "extarch.cmdCopyLineDown",
-    Success: "extarch.cmdSuccess",
 };
