@@ -1,7 +1,7 @@
+import * as vscode from "vscode";
+
 import { CommandId } from "../constant.commands";
 import { Command } from "../../../entities/command.entity";
-
-import * as vscode from "vscode";
 
 /* Add new commands here */
 
